@@ -132,7 +132,7 @@ pip3 install -r requirements.txt
 前任.skill   ❯ ……
              ❯ 为什么突然问这个
              ❯ （三分钟后）
-             ❯ 不是挺明显的嘛
+             ❯ 不要问这个了
 ```
 
 **吵架模式**
