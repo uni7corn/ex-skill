@@ -26,7 +26,7 @@ Talks in their tone, shows care in their way, knows when they'd go silent
 
 [Data Sources](#data-sources) · [Install](#install) · [Usage](#usage) · [Examples](#examples) · [Install Guide](INSTALL.md)
 
-[**中文**](README_ZH.md)
+[**中文**](README_ZH.md) · [**Español**](README_ES.md) · [**Deutsch**](README_DE.md) · [**日本語**](README_JA.md) · [**Русский**](README_RU.md) · [**Português**](README_PT.md)
 
 </div>
 
