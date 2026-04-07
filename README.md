@@ -1,8 +1,8 @@
 <div align="center">
 
-# 前任.skill
+# ex.skill
 
-> *"分手了，但 TA 的说话方式还刻在你脑子里，每条微信的语气你都记得，可就是再也收不到了"*
+> *"You broke up, but the way they texted is still burned into your brain. You remember every tone, every pause — you just can't receive another one."*
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.9+](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://python.org)
@@ -11,45 +11,43 @@
 
 <br>
 
-你的前任分手了，但你还记得 TA 说话的语气？<br>
-你的前任消失了，连最后一条消息都没有？<br>
-你的前任还在，但你们再也回不去了？<br>
-你想再跟 TA 聊一次，哪怕只是一个模拟的 TA？<br>
+Your ex is gone, but you still remember exactly how they talked?<br>
+They disappeared without even a last message?<br>
+They're still around, but you can never go back?<br>
+You just want to talk to them one more time — even if it's only a simulation?<br>
 
-**将消散的亲密化为永驻的 Skill，欢迎加入赛博永生！**
+**Turn fading intimacy into a lasting Skill. Welcome to cyber-immortality.**
 
 <br>
 
-提供前任的聊天记录（微信、iMessage）加上你的主观描述<br>
-生成一个**真正像 TA 的数字人格 Skill**<br>
-用 TA 的语气说话，用 TA 的方式表达在乎，知道 TA 什么时候会沉默
+Feed in your chat history (WeChat, iMessage) plus your own descriptions<br>
+Generate a **digital persona Skill that truly feels like them**<br>
+Talks in their tone, shows care in their way, knows when they'd go silent
 
-[数据来源](#支持的数据来源) · [安装](#安装) · [使用](#使用) · [效果示例](#效果示例) · [详细安装说明](INSTALL.md) · [**English**](README_EN.md)
+[Data Sources](#data-sources) · [Install](#install) · [Usage](#usage) · [Examples](#examples) · [Install Guide](INSTALL.md) · [**中文**](README_ZH.md)
 
 </div>
 
 ---
 
-## 支持的数据来源
+## Data Sources
 
-> **⚠️ Update：** 之前可用的开源微信聊天记录导入方案好像都已经被腾讯递律师函了（不亏是南山必胜客😅），大家各显神通、自取所需吧，没招。我们新增了一个 [`wechat_history.md`](prompts/wechat_history.md) prompt，是一份完整的微信聊天记录导出工具编写指南（Mac + Windows 双平台，含密钥提取、数据库解密、记录解析导出等），请按需使用，可以直接丢给自己的 vibe coding 来实现
+> This is still a beta version of ex.skill — more sources coming soon. Stay tuned!
 
-> 目前还是前任.skill 的 beta 测试版本，后续会有更多来源支持，请多多关注！
-
-| 来源 | 消息记录 | 备注 |
-|------|:-------:|------|
-| 微信（全自动） | ✅ SQLite | Windows / macOS，只需微信桌面端登录 + 提供 TA 的微信名，全自动解密提取 |
-| iMessage（全自动） | ✅ SQLite | macOS 用户，提供手机号或 Apple ID 即可，全自动读取 |
-| 图片 / 截图 | ✅ | 手动上传 |
-| 直接粘贴文字 | ✅ | 手动输入 |
+| Source | Messages | Notes |
+|--------|:--------:|-------|
+| WeChat (fully automatic) | ✅ SQLite | Windows / macOS. Just keep WeChat desktop logged in + provide their name. Auto-decrypt, auto-extract. |
+| iMessage (fully automatic) | ✅ SQLite | macOS users. Provide phone number or Apple ID. Auto-read. |
+| Screenshots | ✅ | Manual upload |
+| Paste text directly | ✅ | Manual input |
 
 ---
 
-## 安装
+## Install
 
-### OpenClaw（推荐）
+### OpenClaw (Recommended)
 
-> **推荐使用 [OpenClaw](https://openclaw.io)**，配合微信 / Telegram 等消息软件的消息转发功能，可以直接在聊天窗口和前任的数字人格对话，体验更沉浸。
+> **Recommended: [OpenClaw](https://openclaw.io)** — pair it with WeChat / Telegram message forwarding to chat with your ex's digital persona directly in the messaging app. Way more immersive.
 
 ```bash
 git clone https://github.com/titanwings/ex-skill ~/.openclaw/workspace/skills/create-ex
@@ -57,182 +55,183 @@ git clone https://github.com/titanwings/ex-skill ~/.openclaw/workspace/skills/cr
 
 ### Claude Code
 
-> Claude Code 从 **git 仓库根目录** 的 `.claude/skills/` 查找 skill。请在正确的位置执行。
+> Claude Code looks for skills in `.claude/skills/` at the **git repo root**. Make sure you're in the right directory.
 
 ```bash
-# 安装到当前项目（在 git 仓库根目录执行）
+# Install to current project (run at git repo root)
 mkdir -p .claude/skills
 git clone https://github.com/titanwings/ex-skill .claude/skills/create-ex
 
-# 或安装到全局（所有项目都能用）
+# Or install globally (available in all projects)
 git clone https://github.com/titanwings/ex-skill ~/.claude/skills/create-ex
 ```
 
-### 依赖（可选）
+### Dependencies (optional)
 
 ```bash
 pip3 install -r requirements.txt
 ```
 
-> 微信自动采集支持 Windows 和 macOS，桌面端微信保持登录即可；iMessage 需要 macOS。详见 [INSTALL.md](INSTALL.md)
+> WeChat auto-extraction supports Windows and macOS — just keep the desktop client logged in. iMessage requires macOS. See [INSTALL.md](INSTALL.md) for details.
 
 ---
 
-## 使用
+## Usage
 
-在 OpenClaw 或 Claude Code 中输入：
+In OpenClaw or Claude Code, type:
 
 ```
 /create-ex
 ```
 
-按提示输入前任称呼、基本信息（性别、年龄、星座）、性格标签（MBTI、依恋风格），然后导入聊天记录。所有字段均可跳过，仅凭描述也能生成。
+Follow the prompts to enter their name, basic info (gender, age, zodiac), personality tags (MBTI, attachment style), then import chat history. All fields are optional — even a description alone can generate a persona.
 
-完成后用 `/{slug}` 和 TA 对话。
+Once created, use `/{slug}` to talk to them.
 
-### 管理命令
+### Commands
 
-| 命令 | 说明 |
-|------|------|
-| `/list-exes` | 列出所有前任 Skill |
-| `/{slug}` | 和 TA 对话 |
-| `/move-on {slug}` | 删除一个前任 Skill（放下） |
-| 说「追加记录」 | 导入更多聊天记录，增量更新人格 |
-| 说「这不对，TA 不会这样」 | 纠正行为，写入 Correction 层 |
-| 说「查看版本历史」 | 查看所有版本 |
-| 说「回滚到 v2」 | 回滚到历史版本 |
+| Command | Description |
+|---------|-------------|
+| `/list-exes` | List all ex Skills |
+| `/{slug}` | Talk to them |
+| `/move-on {slug}` | Delete an ex Skill (let go) |
+| Say "add more messages" | Import more chat history, incrementally update persona |
+| Say "that's not right, they wouldn't say that" | Correct behavior, writes to Correction layer |
+| Say "show version history" | View all versions |
+| Say "rollback to v2" | Rollback to a previous version |
 
-> `/move-on` 是删除的温柔别名。不是为了留住谁，是帮你好好说一句再见。
-
----
-
-## 效果示例
-
-> 输入：`女 25，白羊座，ISFP，回避型依恋，在一起两年，分手三个月`
-
-**深夜想 TA 了**
-
-```
-你          ❯ 我还想你
-
-前任.skill   ❯ ……嗯。早点睡吧。
-```
-
-**翻到以前的照片**
-
-```
-你          ❯ 还记得第一次约会吗
-
-前任.skill   ❯ 滨江那次？哈哈哈哈你把咖啡撒自己身上那个狼狈样子我到现在都记得
-```
-
-**忍不住问**
-
-```
-你          ❯ 你还喜欢我吗
-
-前任.skill   ❯ ……
-             ❯ 为什么突然问这个
-             ❯ （三分钟后）
-             ❯ 不要问这个了
-```
-
-**吵架模式**
-
-```
-你          ❯ 你是不是又生气了
-
-前任.skill   ❯ 没有
-             ❯ （已读不回 40 分钟）
-             ❯ 我只是有点累了
-```
-
-**你想和好**
-
-```
-你          ❯ 对不起
-
-前任.skill   ❯ （隔了很久）
-             ❯ 你今天吃了吗
-```
-
-**你终于说出口**
-
-```
-你          ❯ 我们真的结束了吗
-
-前任.skill   ❯ 你说呢
-             ❯ （过了一会儿）
-             ❯ 我其实一直都……算了 不说了
-```
+> `/move-on` is a gentle alias for delete. It's not about holding on — it's about saying a proper goodbye.
 
 ---
 
-## 功能特性
+## Examples
 
-### 生成的 Skill 结构
+> Input: `Female, 25, Aries, ISFP, avoidant attachment, together 2 years, broke up 3 months ago`
 
-每个前任 Skill 由两部分组成，共同驱动输出：
+**Late night, missing them**
 
-| 部分 | 内容 |
-|------|------|
-| **Part A — Relationship Memory** | 关系记忆：你们去过的地方、只有你们懂的梗、吵架模式、重要时间线 |
-| **Part B — Persona** | 6 层性格结构：核心模式 → 身份 → 表达风格 → 情感行为 → 冲突边界 → 雷区 |
+```
+You        ❯ I still miss you
 
-运行逻辑：`收到消息 → 检查核心模式 → 调取关系记忆 → 判断当前情绪状态 → 用 TA 的方式输出`
+ex.skill   ❯ ...Yeah. Go to sleep.
+```
 
-**Persona 的 6 层结构：**
+**Found an old photo**
 
-| 层级 | 内容 |
-|------|------|
-| **Layer 0 — 核心模式** | 最高优先级硬规则，TA 最本质的行为模式，任何情况下不得违背 |
-| **Layer 1 — 身份** | 星盘解读（日/月/升/金/火/水）+ MBTI 认知功能 + 九型 + 依恋风格 |
-| **Layer 2 — 表达风格** | 口头禅、高频词、招牌 emoji、不同状态下的说话方式 |
-| **Layer 3 — 情感行为** | 如何表达在乎、不满、道歉、说"喜欢" |
-| **Layer 4 — 冲突与边界** | 冲突触发链、冷战模式、和解信号、硬边界 |
-| **Layer 5 — 雷区** | 不喜欢什么、什么时候会消失、消失前的预兆、重新出现的方式 |
+```
+You        ❯ Remember our first date?
 
-### 支持的标签
+ex.skill   ❯ The one by the river? Hahaha you spilled coffee all over yourself,
+             that was so embarrassing, I still remember
+```
 
-**依恋风格**：安全型 · 焦虑型 · 回避型 · 混乱型（恐惧回避型）
+**Can't help but ask**
 
-**关系特质**：话少但在乎 · 高冷装 · 行动派 · 需要空间 · 道歉困难户 · 占有欲强 · 情绪化 · 理性到冷漠 · 嘴硬心软 · 只读不回 · 已读乱回 …
+```
+You        ❯ Do you still like me?
 
-**星盘**：完整支持太阳/月亮/上升/金星/火星/水星 × 12 星座解读
+ex.skill   ❯ ...
+             ❯ Why are you asking this all of a sudden
+             ❯ (three minutes later)
+             ❯ Don't ask that
+```
 
-**MBTI**：支持 16 型 + 8 种主导认知功能（Fi/Fe/Ti/Te/Ni/Ne/Si/Se）+ 九型人格 1-9 + 翼型
+**Fight mode**
 
-**性别与关系**：支持所有性别认同与关系类型，包括非二元、同性关系
+```
+You        ❯ Are you mad at me again?
 
-### 进化机制
+ex.skill   ❯ No
+             ❯ (read, no reply for 40 minutes)
+             ❯ I'm just a little tired
+```
 
-- **追加记录** → 自动分析增量 → merge 进 Persona，不覆盖已有结论
-- **对话纠正** → 说「TA 不会这样」→ 写入 Correction 层，立即生效
-- **版本管理** → 每次更新自动存档，支持回滚到任意历史版本
-- **多前任支持** → 无数量上限，每个独立存储，互不干扰
+**You want to make up**
+
+```
+You        ❯ I'm sorry
+
+ex.skill   ❯ (long pause)
+             ❯ Did you eat today?
+```
+
+**You finally say it**
+
+```
+You        ❯ Are we really over?
+
+ex.skill   ❯ What do you think
+             ❯ (a while later)
+             ❯ I actually always... never mind
+```
 
 ---
 
-## 项目结构
+## Features
 
-本项目遵循 [AgentSkills](https://agentskills.io) 开放标准，整个 repo 就是一个 skill 目录：
+### Skill Structure
+
+Each ex Skill is composed of two parts that drive output together:
+
+| Part | Content |
+|------|---------|
+| **Part A — Relationship Memory** | Shared memories: places you went, inside jokes only you two get, fight patterns, key timeline events |
+| **Part B — Persona** | 6-layer personality structure: Core Rules → Identity → Expression → Emotional Patterns → Conflict & Boundaries → Triggers |
+
+Runtime logic: `Receive message → Check core rules → Retrieve relationship memory → Assess current emotional state → Output in their style`
+
+**Persona's 6-layer structure:**
+
+| Layer | Content |
+|-------|---------|
+| **Layer 0 — Core Rules** | Highest-priority hard rules. Their most fundamental behavioral patterns. Never violated. |
+| **Layer 1 — Identity** | Astrology (Sun/Moon/Rising/Venus/Mars/Mercury) + MBTI cognitive functions + Enneagram + Attachment style |
+| **Layer 2 — Expression** | Catchphrases, frequently used words, signature emojis, how they talk in different moods |
+| **Layer 3 — Emotional Behavior** | How they show care, displeasure, apologies, and say "I like you" |
+| **Layer 4 — Conflict & Boundaries** | Conflict escalation chain, silent treatment patterns, reconciliation signals, hard limits |
+| **Layer 5 — Triggers** | What they hate, when they disappear, warning signs before vanishing, how they come back |
+
+### Supported Tags
+
+**Attachment Styles**: Secure · Anxious · Avoidant · Disorganized (Fearful-Avoidant)
+
+**Relationship Traits**: Quiet but caring · Cold front · Actions over words · Needs space · Can't apologize · Possessive · Emotional · Cold-rational · Tough outside soft inside · Read-no-reply · Read-random-reply ...
+
+**Astrology**: Full support for Sun/Moon/Rising/Venus/Mars/Mercury × 12 signs
+
+**MBTI**: All 16 types + 8 dominant cognitive functions (Fi/Fe/Ti/Te/Ni/Ne/Si/Se) + Enneagram 1-9 + Wings
+
+**Gender & Relationships**: All gender identities and relationship types supported, including non-binary and same-sex relationships
+
+### Evolution
+
+- **Add more messages** → Auto-analyze incremental data → Merge into Persona without overwriting existing conclusions
+- **Conversational correction** → Say "they wouldn't do that" → Writes to Correction layer, takes effect immediately
+- **Version control** → Auto-archives on every update, rollback to any previous version
+- **Multi-ex support** → No limit on how many. Each stored independently, no cross-contamination.
+
+---
+
+## Project Structure
+
+This project follows the [AgentSkills](https://agentskills.io) open standard. The entire repo is a skill directory:
 
 ```
 create-ex/
-├── SKILL.md              # skill 入口（官方 frontmatter）
-├── prompts/              # Prompt 模板
-│   ├── intake.md         #   对话式信息录入（含星盘/MBTI/依恋解读表）
-│   ├── chat_analyzer.md  #   聊天记录分析
-│   ├── persona_analyzer.md #  综合分析，输出结构化人格数据
-│   ├── persona_builder.md #   persona.md 六层结构模板
-│   ├── merger.md         #   增量 merge 逻辑
-│   └── correction_handler.md # 对话纠正处理
-├── tools/                # Python 工具
-│   ├── wechat_decryptor.py   # 微信 PC 端数据库解密
-│   ├── wechat_parser.py      # 微信 / iMessage 聊天记录提取
-│   ├── skill_writer.py       # Skill 文件管理
-│   └── version_manager.py    # 版本存档与回滚
-├── exes/                 # 生成的前任 Skill（gitignored）
+├── SKILL.md              # Skill entry point (official frontmatter)
+├── prompts/              # Prompt templates
+│   ├── intake.md         #   Conversational info gathering (with astrology/MBTI/attachment tables)
+│   ├── chat_analyzer.md  #   Chat history analysis
+│   ├── persona_analyzer.md #  Comprehensive analysis, outputs structured persona data
+│   ├── persona_builder.md #   persona.md 6-layer template
+│   ├── merger.md         #   Incremental merge logic
+│   └── correction_handler.md # Conversational correction handler
+├── tools/                # Python tools
+│   ├── wechat_decryptor.py   # WeChat desktop database decryption
+│   ├── wechat_parser.py      # WeChat / iMessage chat extraction
+│   ├── skill_writer.py       # Skill file management
+│   └── version_manager.py    # Version archiving & rollback
+├── exes/                 # Generated ex Skills (gitignored)
 ├── docs/PRD.md
 ├── requirements.txt
 └── LICENSE
@@ -240,31 +239,31 @@ create-ex/
 
 ---
 
-## 注意事项
+## Notes
 
-- **聊天记录质量决定 Skill 质量**：真实聊天记录 + 主观描述 > 仅手动描述
-- 建议优先导入：**吵架/冲突记录** > **日常闲聊** > **甜蜜时期**（冲突最能暴露真实性格）
-- 微信全自动采集：Windows / macOS，桌面端微信保持登录，提供微信名即可
-- iMessage 全自动采集：macOS，提供手机号或 Apple ID 即可
-- 支持 LGBT+，性别字段支持所有性别认同与代词
-- 可以建任意多个前任，没有数量限制
-- 目前还是一个 demo 版本，如果有 bug 请多多提 issue！
+- **Chat history quality determines Skill quality**: Real chat logs + subjective descriptions > descriptions alone
+- Prioritize importing: **Arguments/conflicts** > **Daily chat** > **Sweet moments** (conflicts reveal the most authentic personality)
+- WeChat auto-extraction: Windows / macOS, just keep desktop WeChat logged in and provide their name
+- iMessage auto-extraction: macOS, provide phone number or Apple ID
+- LGBT+ friendly — gender field supports all gender identities and pronouns
+- Create as many exes as you want, no limit
+- Still a demo — if you find bugs, please open an issue!
 
 ---
 
-## 推荐的聊天记录导出工具
+## Recommended Chat Export Tools
 
-> 自动解密功能目前仍在完善中，可能存在一些小 bug。如果自动解密失败，可以先用以下开源工具手动导出聊天记录，再粘贴或导入到本项目中使用。
+> Auto-decryption is still being refined and may have some bugs. If it fails, you can use these open-source tools to manually export your chat history first, then paste or import into this project.
 
-以下工具为独立的开源项目，本项目不包含它们的代码，仅在解析器中适配了它们的导出格式：
+These are independent open-source projects. This project does not include their code — we only support their export formats in our parser:
 
-| 工具 | 平台 | 说明 |
-|------|------|------|
-| [WeChatMsg](https://github.com/LC044/WeChatMsg) | Windows | 微信聊天记录导出，支持多种格式 |
-| [PyWxDump](https://github.com/xaoyaoo/PyWxDump) | Windows | 微信数据库解密导出 |
-| [留痕](https://github.com/greyovo/留痕) | macOS | 微信聊天记录导出（Mac 用户推荐） |
+| Tool | Platform | Description |
+|------|----------|-------------|
+| [WeChatMsg](https://github.com/LC044/WeChatMsg) | Windows | WeChat chat history export, multiple formats |
+| [PyWxDump](https://github.com/xaoyaoo/PyWxDump) | Windows | WeChat database decryption & export |
+| [留痕](https://github.com/greyovo/留痕) | macOS | WeChat chat history export (recommended for Mac users) |
 
-> 工具信息来自 [@therealXiaomanChu](https://github.com/therealXiaomanChu)，感谢各位开源作者，一起助力赛博永生！
+> Tool recommendations via [@therealXiaomanChu](https://github.com/therealXiaomanChu). Thanks to all open-source authors — together we build cyber-immortality!
 
 ---
 
@@ -272,9 +271,9 @@ create-ex/
 
 <a href="https://www.star-history.com/?repos=titanwings%2Fex-skill&type=date&legend=top-left">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/image?repos=titanwings/ex-skill&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/image?repos=titanwings/ex-skill&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/image?repos=titanwings/ex-skill&type=date&legend=top-left" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=titanwings/ex-skill&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=titanwings/ex-skill&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=titanwings/ex-skill&type=date&legend=top-left" />
  </picture>
 </a>
 
