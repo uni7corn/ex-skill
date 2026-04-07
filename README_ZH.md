@@ -32,6 +32,18 @@
 
 ---
 
+> 🆕 **2025.04.07 更新** — 大家对二创 dot-skill 热情超高！我搓了一个社区平台，欢迎投 PR 一起维护分享！
+>
+> 任何 skill 或者 meta-skill 可以一起分享，可以直接给大家自己的 GitHub repo 引流～ 没有中间商赚差价
+>
+> 👉 **[titanwings.github.io/colleague-skill-site](https://titanwings.github.io/colleague-skill-site/)**
+>
+> 已收录：户晨风.skill · 峰哥亡命天涯.skill · 罗翔.skill 等
+>
+> ⏳ 目前 PR 人工审核中，可能有点慢，感谢耐心等待！
+
+---
+
 ## 支持的数据来源
 
 > **⚠️ Update：** 之前可用的开源微信聊天记录导入方案好像都已经被腾讯递律师函了（不亏是南山必胜客😅），大家各显神通、自取所需吧，没招。我们新增了一个 [`wechat_history.md`](prompts/wechat_history.md) prompt，是一份完整的微信聊天记录导出工具编写指南（Mac + Windows 双平台，含密钥提取、数据库解密、记录解析导出等），请按需使用，可以直接丢给自己的 vibe coding 来实现
