@@ -24,7 +24,9 @@ Feed in your chat history (WeChat, iMessage) plus your own descriptions<br>
 Generate a **digital persona Skill that truly feels like them**<br>
 Talks in their tone, shows care in their way, knows when they'd go silent
 
-[Data Sources](#data-sources) · [Install](#install) · [Usage](#usage) · [Examples](#examples) · [Install Guide](INSTALL.md) · [**中文**](README_ZH.md)
+[Data Sources](#data-sources) · [Install](#install) · [Usage](#usage) · [Examples](#examples) · [Install Guide](INSTALL.md)
+
+[**中文**](README_ZH.md)
 
 </div>
 
